@@ -180,6 +180,8 @@ int main() {
 
 ## OUTPUT B- 
 
+![image](https://github.com/user-attachments/assets/ae2dac97-befb-4c1a-8124-dfa6e09e50cb)
+
 
 ## OUTPUT C-
 <img width="667" alt="Screenshot 2024-10-21 at 2 34 16 PM" src="https://github.com/user-attachments/assets/3ed62d69-e818-4d21-a040-1b693765fb9b">
