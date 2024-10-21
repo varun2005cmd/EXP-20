@@ -184,7 +184,9 @@ int main() {
 
 
 ## OUTPUT C-
-<img width="667" alt="Screenshot 2024-10-21 at 2 34 16 PM" src="https://github.com/user-attachments/assets/3ed62d69-e818-4d21-a040-1b693765fb9b">
+
+![image](https://github.com/user-attachments/assets/6c88c7f3-d5e2-4f59-a2f2-eadac00bf6a3)
+
 
 
 ### CONCLUSION
