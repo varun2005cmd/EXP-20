@@ -175,10 +175,11 @@ int main() {
 
 ## OUTPUT A- <BR>
 
-<img width="580" alt="Screenshot 2024-10-21 at 2 33 48 PM" src="https://github.com/user-attachments/assets/e267f666-eb3a-47b4-a980-c36dcca1a693">
+![image](https://github.com/user-attachments/assets/48f9a9e2-f48d-4423-9669-ab13f522e67e)
+
 
 ## OUTPUT B- 
-<img width="533" alt="Screenshot 2024-10-21 at 2 33 57 PM" src="https://github.com/user-attachments/assets/85ec8307-474d-49f7-a3ba-b4fd3ab05737">
+
 
 ## OUTPUT C-
 <img width="667" alt="Screenshot 2024-10-21 at 2 34 16 PM" src="https://github.com/user-attachments/assets/3ed62d69-e818-4d21-a040-1b693765fb9b">
