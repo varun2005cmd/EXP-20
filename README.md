@@ -1,123 +1,188 @@
-# Experiment 20 Sorting
+# EXPERIMENT 20
 
+### AIM
+To study and implement Sorting Algorithm
+### 1. Selection sort
+### 2. Insertion sort
+### 3. Bubble sort
+   
+### SOFTWARE USED
+VS Code
 
-## Aim:
-To study and implement Sorting Algorithms
+### THEORY
+In C++, sorting refers to the process of arranging elements in a specific order, typically in ascending or descending order. Sorting algorithms can be applied to arrays, vectors, or other containers to reorder the elements based on their values.<br>
 
+1. *Selection Sort:*
+* Selection Sort works by repeatedly finding the minimum element from the unsorted part of the array and swapping it with the first unsorted element.
+* Time Complexity: O(n²) for all cases.
+* Space Complexity: O(1) (in-place sorting). <br>
 
-## Apparatus:
-Vs Code, Github
-
-
-## Theory:
-
-Selection Sort is a simple comparison-based sorting algorithm used to arrange elements in a list in a specified order (ascending or descending). It divides the array into a sorted and an unsorted region, and iteratively selects the smallest (or largest, depending on the sorting order) element from the unsorted region, then swaps it with the first element of the unsorted region, expanding the sorted region by one element.
-
-### Basic operations:
-1: Enqueue: Adds an element to the end (rear) of the queue.
-
-2: Dequeue: Removes an element from the front of the queue.
-
-3: Front/Peek: Returns the front element without removing it.
-
-
-## Explanation:
-
-### Class Definition (Queue):
-
-A class named Queue encapsulates the queue operations and attributes.
-An array arr[] is used to store the queue elements.
-Two integer variables, front and rear, track the front and rear positions in the array.
-An integer size keeps track of the current number of elements in the queue.
-
-### Constructor (Queue()):
-
-Initializes front to 0, rear to -1, and size to 0, indicating that the queue is initially empty.
-Enqueue Method (enqueue(int value)):
-Checks if the queue is full. If so, it displays an error message.
-Otherwise, increments rear in a circular manner and stores the value at arr[rear], then increments the size.
-
-### Dequeue Method (dequeue()):
-
-Checks if the queue is empty. If so, it displays an error message.
-Otherwise, it increments front in a circular manner and decrements the size.
-
-### Peek Method (peek()):
-
-Returns the value at arr[front] without removing it.
-If the queue is empty, it returns an error value.
-
-## Code:
-
-### Stack using array: 
+2. *Insertion Sort:*
+* Insertion Sort works by building a sorted array one element at a time. It picks each element and inserts it into its correct position within the already sorted part of the array.
+* Time Complexity: O(n²) in the worst case; O(n) in the best case (already sorted).
+* Space Complexity: O(1) (in-place sorting). <br>
+ 
+3. *Bubble Sort:*
+* Bubble Sort repeatedly swaps adjacent elements if they are in the wrong order. The largest element "bubbles up" to its correct position after each pass.
+* Time Complexity: O(n²) in the worst case.
+* Space Complexity: O(1) (in-place sorting). <br>
+   
+### CODE & OUTPUT 
+1. CODE A:
 ```
 #include<iostream>
 using namespace std;
-#define size 5
-#define ERROR -9999
 
-class Queue{
-    int rear, front, ar[size];
-    public:
-    Queue(){
-        rear= -1;
-        front=-1;
-        ar[0]=0;
-    }
-    void enqueue(int);
-    int dequeue();
-    void disp();
-};
-void Queue::enqueue(int num){
-    if(rear==(size+1)){
-        cout<<"Queue is full"<<endl;
-    }
-    else{
-        if(front==-1){
-            ar[++front]=num;
-            rear++;
-        }
-        else{
-            ar[++rear]=num;
-        }
-    }
+void swap(int *a, int *b) {
+    int temp;
+    temp = *a;
+    *a = *b;
+    *b = temp;
 }
-int Queue::dequeue(){
-    if(front==-1||front==(rear+1)){
-        cout<<"Queue is empty"<<endl;
-        return ERROR;
-    }
-    else{
-        int val=ar[front++];
-        return val;
-    }
-}
-void Queue::disp(){
-    if(front==-1||front==(rear+1)){
-        cout<<"Queue is empty"<<endl;
-        return;
-    }
-    else{
-        int i=front;
-        while(i!=(rear+1)){
-            cout<<ar[i]<<"  ";
-            i++;
+
+void s_sort(int *a, int elements) {
+    int n = 0;
+    int *b;
+
+    while (n < elements) {
+        b = a + 1;
+        for (int i = 0; i < (elements - 1) - n; i++) {
+            if (*a > *b) {
+                swap(a, b);
+            }
+            b++;
         }
+        n++;
+        a++;
     }
 }
 
-int main(){
-    Queue q1;
-    q1.enqueue(4);
-    q1.enqueue(8);
-    q1.enqueue(3);
-    int val=q1.dequeue();
-    cout<<val<<endl;
-    q1.disp();
+int main() {
+    int no_el;
+    cout << "How many elements in your array?" << endl;
+    cin >> no_el;
+    int arr[no_el];
+
+    cout << "Enter the elements of the array: " << endl;
+    for (int i = 0; i < no_el; i++) {
+        cin >> arr[i];
+    }
+
+    s_sort(arr, no_el);
+
+    cout << "Sorted array: " << endl;
+    for (int i = 0; i < no_el; i++) {
+        cout << arr[i] << " ";
+    }
+    cout << endl;
+    return 0;
+}
 ```
-### Output:
-<img width="1040" alt="Screenshot 2024-10-21 at 2 01 51 PM" src="https://github.com/user-attachments/assets/f03e0305-e294-4343-85de-1122a211920b">
+
+2. CODE B:
+```
+#include<iostream>
+using namespace std;
+
+void insertionSort(int arr[], int n) {
+    for (int i = 1; i < n; i++) {
+        int key = arr[i];
+        int j = i - 1;
+
+        // Move elements of arr[0..i-1], that are greater than key, to one position ahead of their current position
+        while (j >= 0 && arr[j] > key) {
+            arr[j + 1] = arr[j];
+            j = j - 1;
+        }
+        arr[j + 1] = key;
+    }
+}
+
+int main() {
+    int n;
+    cout << "How many elements in your array?" << endl;
+    cin >> n;
+    
+    int arr[n];
+    cout << "Enter the elements of the array: " << endl;
+    for (int i = 0; i < n; i++) {
+        cin >> arr[i];
+    }
+
+    insertionSort(arr, n);
+
+    cout << "Sorted array: " << endl;
+    for (int i = 0; i < n; i++) {
+        cout << arr[i] << " ";
+    }
+    cout << endl;
+    
+    return 0;
+}
+```
+
+3. CODE C:
+```
+#include<iostream>
+using namespace std;
+
+void swap(int *a, int *b) {
+    int temp;
+    temp = *a;
+    *a = *b;
+    *b = temp;
+}
+
+void bubbleSort(int *a, int elements) {
+    int n = 0;
+    int *b;
+
+    while (n < elements) {
+        b = a + 1;
+        for (int i = 0; i < (elements - 1) - n; i++) {
+            if (*a > *b) {
+                swap(a, b);
+            }
+            b++;
+        }
+        n++;
+        a++;
+    }
+}
+
+int main() {
+    int no_el;
+    cout << "How many elements in your array?" << endl;
+    cin >> no_el;
+
+    int arr[no_el];
+    cout << "Enter the elements of the array: " << endl;
+    for (int i = 0; i < no_el; i++) {
+        cin >> arr[i];
+    }
+
+    bubbleSort(arr, no_el);
+
+    cout << "Sorted array: " << endl;
+    for (int i = 0; i < no_el; i++) {
+        cout << arr[i] << " ";
+    }
+    cout << endl;
+
+    return 0;
+}
+```
+
+## OUTPUT A- <BR>
+
+<img width="580" alt="Screenshot 2024-10-21 at 2 33 48 PM" src="https://github.com/user-attachments/assets/e267f666-eb3a-47b4-a980-c36dcca1a693">
+
+## OUTPUT B- 
+<img width="533" alt="Screenshot 2024-10-21 at 2 33 57 PM" src="https://github.com/user-attachments/assets/85ec8307-474d-49f7-a3ba-b4fd3ab05737">
+
+## OUTPUT C-
+<img width="667" alt="Screenshot 2024-10-21 at 2 34 16 PM" src="https://github.com/user-attachments/assets/3ed62d69-e818-4d21-a040-1b693765fb9b">
 
 
-## Conclusion:
-This program helps us understand how queue can be implemented using arrays. We learnt the different commands/keywords used in queue such as push, pop and peek.
+### CONCLUSION
+These algorithms are primarily useful for educational purposes, and while they work well on small datasets, more advanced sorting algorithms such as Quick Sort, Merge Sort, or Heap Sort are generally preferred for large datasets due to their better performanc
