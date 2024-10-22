@@ -42,4 +42,6 @@ int main() {
     for (int i = 0; i < no_el; i++) {
         cout << arr[i] << " ";
     }
-    cout << end
+    cout << endl;
+    return 0;
+}
